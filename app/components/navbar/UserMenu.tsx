@@ -5,7 +5,6 @@ import Avatar from '../Avatar';
 import { useCallback, useState } from 'react';
 import MenuItem from './MenuItem';
 
-
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
 
