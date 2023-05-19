@@ -1,11 +1,19 @@
 'use client';
 
+import { User } from "next-auth";
 import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
+import { clearScreenDown } from "readline";
 
-const Navbar = () => {
+interface NavbarProps {
+    currentUser?: User | null;
+}
+
+const Navbar: React.FC<NavbarProps> = ({
+    currentUser
+}) => {
     return (
         <div className="fixed w-full bg-white z-10 shadow-sm">
             <div
@@ -15,8 +23,8 @@ const Navbar = () => {
                 "
             >
                 <Container>
-                 <div
-                    className="
+                    <div
+                        className="
                         flex
                         flex-row
                         items-center
@@ -24,11 +32,11 @@ const Navbar = () => {
                         gap-3
                         md:gap-0
                     "
-                >
-                    <Logo />
-                    <Search />
-                    <UserMenu />
-                 </div>
+                    >
+                        <Logo />
+                        <Search />
+                        <UserMenu currentUser={currentUser} />
+                    </div>
                 </Container>
             </div>
         </div>
