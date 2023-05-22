@@ -4,11 +4,11 @@ import axios from 'axios';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { useCallback, useState } from 'react';
-import { 
+import {
     FieldValues,
     SubmitHandler,
     useForm
- } from 'react-hook-form';
+} from 'react-hook-form';
 
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Modal from './Modal';
@@ -16,6 +16,7 @@ import Heading from '../Heading';
 import Input from '../input/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
+import { signIn } from 'next-auth/react';
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -56,7 +57,7 @@ const RegisterModal = () => {
                 title="Welcome to Airbnb"
                 subtitle='Create an account!'
             />
-            <Input 
+            <Input
                 id="email"
                 label="Email"
                 disabled={isLoading}
@@ -64,7 +65,7 @@ const RegisterModal = () => {
                 errors={errors}
                 required
             />
-            <Input 
+            <Input
                 id="name"
                 label="Name"
                 disabled={isLoading}
@@ -72,7 +73,7 @@ const RegisterModal = () => {
                 errors={errors}
                 required
             />
-            <Input 
+            <Input
                 id="password"
                 type="password"
                 label="Password"
@@ -90,13 +91,13 @@ const RegisterModal = () => {
                 outline
                 label="Continue with Google"
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => signIn('google')}
             />
             <Button
                 outline
                 label="Continue with Github"
                 icon={AiFillGithub}
-                onClick={() => {}}
+                onClick={() => signIn('github')}
             />
             <div
                 className='
@@ -124,7 +125,7 @@ const RegisterModal = () => {
             </div>
         </div>
     )
-    return ( 
+    return (
         <Modal
             disabled={isLoading}
             isOpen={registerModal.isOpen}
@@ -135,7 +136,7 @@ const RegisterModal = () => {
             body={bodyContent}
             footer={footerContent}
         />
-     );
+    );
 }
- 
+
 export default RegisterModal;
