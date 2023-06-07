@@ -7,7 +7,7 @@ export async function POST(
     request: Request
 ) {
     const body = await request.json();
-    const { 
+    const {
         email,
         name,
         password
@@ -25,4 +25,3 @@ export async function POST(
 
     return NextResponse.json(user);
 }
-
